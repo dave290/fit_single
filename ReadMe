@@ -1,0 +1,30 @@
+
+Make a copy of the file PARAMETERS.TXT and put this into DATA
+Place the .kel file you wish to fit into subfolder DATA
+
+In DATA, open the file PARAMETERS.TXT
+Enter the .kel file name on line 5
+Enter the lower and upper fit threshold values on lines 7 & 8
+Enter showline on line 12
+
+Return to folder FIT_SINGLE
+Open terminal window in this folder
+Type command
+  python fit_single.py
+Plot will show a blue line showing the linear baseline to be subtracted.
+Go back to the parameter file to adjust the start and end-points of this line
+so that the baseline makes sense.
+
+When baseline is good, then go back to line 12 in the parameter file
+and enter showfit
+Enter best guesses for initial fit values
+Set flags to 0 or 1 depending on if you wish to optimize each parameter.
+Run program again
+
+When you're done, copy the following files into the archive
+.dat file (contains final parameters)
+.png file
+
+
+
+
