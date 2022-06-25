@@ -5,7 +5,7 @@ import collections
 import read_datafilename
 
 def get_fitdisplay():
-    os.chdir('Data')
+    os.chdir('data')
     file=["parameters.txt"]
     for workingfile in file:
         with open(workingfile,'r') as f:
@@ -19,7 +19,7 @@ def get_fitdisplay():
     return fitdisplay
 
 def get_params_flags():
-    os.chdir('Data')
+    os.chdir('data')
     file=["parameters.txt"]
     parameter=[0];flag=[0]
     for workingfile in file:
@@ -43,7 +43,7 @@ def get_params_flags():
     return parameter,flag
 
 def get_step():
-    os.chdir('Data')
+    os.chdir('data')
     file=["parameters.txt"]
     step=[0]
     for workingfile in file:
@@ -64,7 +64,7 @@ def get_step():
     return step
 
 def get_iterations():
-    os.chdir('Data')
+    os.chdir('data')
     file=["parameters.txt"]
     for workingfile in file:
         with open(workingfile,'r') as f:
@@ -79,7 +79,7 @@ def get_iterations():
 
 def get_limits():
     #read lower and upper fit thresholds
-    os.chdir('Data')
+    os.chdir('data')
     file=["parameters.txt"]
     for workingfile in file:
         with open(workingfile,'r') as f:
@@ -95,7 +95,7 @@ def get_limits():
     #determine starting and ending line numbers from data file
     A=read_datafilename.get_datafilename()
     datafile=[A[0]]
-    os.chdir("Data")
+    os.chdir("data")
     for workingfile in datafile:
         with open(workingfile, 'r') as f:  
             linesofdata=[0]

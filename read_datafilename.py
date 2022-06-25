@@ -3,7 +3,7 @@
 import os
 
 def get_datafilename():
-    os.chdir('Data')
+    os.chdir('data')
     file=["parameters.txt"]
     for workingfile in file:
         with open(workingfile,'r') as f:

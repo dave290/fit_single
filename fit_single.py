@@ -17,7 +17,7 @@ print("\n")
 datafilename=A[0]; print("Data file",datafilename)
 LDFN=len(datafilename)
 newfilename=datafilename[0:LDFN-4]+".dat"
-path=os.getcwd()+"/Data/"
+path=os.getcwd()+"/data/"
 newfilename=path+newfilename
 coordinate=A[1]
 

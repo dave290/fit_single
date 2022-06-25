@@ -7,7 +7,7 @@ import read_datafilename
 
 def velocity(startline,endline):
     A=read_datafilename.get_datafilename()
-    os.chdir('Data')
+    os.chdir('data')
     file=[A[0]]
     vel_list=[0]
     for workingfile in file:
@@ -29,7 +29,7 @@ def velocity(startline,endline):
 
 def intensity(startline,endline):
     A=read_datafilename.get_datafilename()
-    os.chdir('Data')
+    os.chdir('data')
     file=[A[0]]
     int_list=[0]
     for workingfile in file:
