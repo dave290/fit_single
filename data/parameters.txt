@@ -9,7 +9,7 @@ Upperfitthreshold -56000.0
 Iterations 20
 #
 # showline or showfit
-F showfit
+F showline
 #
 # fit stepsizes and max steps
 S centerstepsize&maxsteps(m/s) 100  100
@@ -17,8 +17,8 @@ S coefficientstepsize&steps(Kelvins) 0.2 100
 S sigmastepsize&steps(m/s) 100 100
 #
 # initial fit values
-P center -90000 1
-P coef 10 1
-P sigma 10000 1
+P center -80000 0
+P coef 4 0
+P sigma 5000 0
 #
 # End of parameters. Do not hit return at the end of this line!
