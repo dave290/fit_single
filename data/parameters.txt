@@ -2,10 +2,10 @@
 # Flags appear after parameters and should be set to either "0" or "1"
 # When set to "1" that parameter is actively fit
 #
-File 22-05-23T132721.kel
+File 22-05-23T155700.kel
 Coordinate Velocity_(m/s)
-Lowerfitthreshold -94500.0
-Upperfitthreshold -37400.0
+Lowerfitthreshold -31000.0
+Upperfitthreshold +14000.0
 Iterations 20
 #
 # showline or showfit
@@ -17,8 +17,8 @@ S coefficientstepsize&steps(Kelvins) 0.2 100
 S sigmastepsize&steps(m/s) 100 100
 #
 # initial fit values
-P center -60000 1
-P coef 10 1
+P center -20000 1
+P coef 5 1
 P sigma 5000 1
 #
 # End of parameters. Do not hit return at the end of this line!
