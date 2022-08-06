@@ -43,8 +43,8 @@ print(fitdisplaytype)
 
 if fitdisplaytype=="showline":
     #READ EXPERIMENTAL DATA FROM -200000 M/S to +200000 M/S
-    velocity=read_datafile.velocity(63,869)
-    intensity=read_datafile.intensity(63,869)
+    velocity=read_datafile.velocity(64,869)
+    intensity=read_datafile.intensity(64,869)
     plot.plot_showline(velocity,intensity,points,slope,intercept,coordinate,offset)
     exit()
 
