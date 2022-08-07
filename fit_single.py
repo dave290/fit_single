@@ -29,7 +29,7 @@ velocity=read_datafile.velocity(startline,endline)
 intensity=read_datafile.intensity(startline,endline)
 impv=intensity[0]   #intensity of most negative velocity
 imnv=intensity[-1]  #intensity of most positive velocity
-offset=startline-63 #use this when plotting line superimposed on data
+offset=startline-64 #use this when plotting line superimposed on data
 
 #CALCULATE LINEAR BASELINE SLOPE AND INTERCEPT
 delta=imnv-impv

@@ -1,36 +1,34 @@
 Welcome!  This suite of Python scripts is intended to be used for fitting radio-astronomical data obtained from the NsfIntegrate program.
 
+SETTING UP THESE PROGRAMS FOR THE FIRST TIME
 The Matplotlib program is required for plotting. PIP install using the command below:
 $ pip install matplotlib
-
-Be sure to create a folder named "Data" and make this a subfolder inside of the folder containing the programs below.
-The Data folder should contain the following two files:
+Be sure to create a folder named "data" and make this a subfolder inside of the folder containing the programs below.
+The data folder should contain the following two files:
 parameters.txt
 <datafile>.kel
 
-In Data, open the file PARAMETERS.TXT
+PLOT THE KEL FILE
+In "data" subfolder, open the file "parameters.txt"  (leave this file open so you can modify later)
 Enter the .kel file name on line 5
-Enter the lower and upper fit threshold values on lines 7 & 8
-Enter showline on line 12
+Enter lower and upper fit threshold values of -199000 and +199000 on lines 7 & 8
+Return to folder "fit_single" and enter command below to plot the .kel file:
+$ python plotkel.py
 
-Return to the parent folder containing the Python scripts
-Open terminal window in this folder
-Type command
-  python fit_single.py
-Plot will show a blue line showing the linear baseline to be subtracted.
-Go back to the parameter file to adjust the start and end-points of this line
-so that the baseline makes sense.
+DETERMINE YOUR LINEAR BASELINE TO SUBTRACT FOR A SELECTED PEAK
+Now, you're ready to determine the endpoints of the linear baseline you wish to subtract
+On lines 7 & 8 of "parameters.txt" enter the lower and upper values based on the left and right sides of the peak you wish to fit
+Enter "showline" on line 12
+To see the baseline that this will subtract, enter the command below:
+$ python fit_single.py
+A blue line will appear. This is the baseline you have selected.
+Adjust lower and upper fit values until blue line matches edges of the peak.
 
-When baseline is good, then go back to line 12 in the parameter file
-and enter showfit
-Enter best guesses for initial fit values
-Set flags to 0 or 1 depending on if you wish to optimize each parameter.
-Run program again
-
-When you're done, the following files will be generated:
-.dat file (contains final parameters)
-.png file (image of data with fit)
-
-
-
-
+FIND THE CENTER, COEFFICIENT AND HEIGHT OF THE PEAK YOU SELECTED
+When you're satisfied with the baseline, enter "showfit" on line 12 of "parameters.txt"
+In "parameters.txt" enter your approximate guesses for the peak center, coefficient and width"
+Set the flag next to each to "1" to fit, or "0" to keep constant.
+Enter the command below:
+$ python fit_single.py
+After running, the program will display the fit with the raw data. 
+It will display store your best-fit values in the terminal window and store them in a .dat file.

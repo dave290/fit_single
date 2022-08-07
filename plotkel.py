@@ -1,6 +1,7 @@
 #plotkel.py
 #plots a single data scan from a .kel file
-#this is not required for the fit.py core program
+#this is not called by the fit programs, but is meant to be run independently
+#August 7, 2022
 
 import os
 import read_parameters
@@ -19,7 +20,7 @@ stuff=read_parameters.get_limits()
 startline=stuff[2]
 endline=stuff[3]
 
-os.chdir("Data")
+os.chdir("data")
 for workingfile in file:
     with open(workingfile, 'r') as f:    
         N=0
@@ -36,19 +37,20 @@ for workingfile in file:
     velocityA[0]=velocityA[1]
     intensityA[0]=intensityA[1]
 
+#Get galactic latitude and longitude to display on plot title
+gallatlong=read_parameters.get_gallatlong()
+
 import matplotlib.pyplot as plt
 from mpl_toolkits import mplot3d
 fig=plt.figure(figsize=(10,6))
 ax=plt.axes()
 #title
-ax.set_title("Intensity_(Kelvins) vs " + A[1])
+lat=str(gallatlong[0])
+long=str(gallatlong[1])
+ax.set_title("Galactic Longitude " + long + " degrees  "+"    Galactic Latitude "+ lat+" degrees")
 #label axes
 ax.set_xlabel(A[1])
 ax.set_ylabel("Intensity_(K)")
-#set axis endpoints
-#ax.set_xlim(1419500000,1421500000)
-#set axis ticks
-#ax.set_xticks([1419500000,1420000000,1420500000,1421000000,1421500000])
 #plot array data
 ax.scatter(velocityA,intensityA, marker=".", c="red")
 plt.show()

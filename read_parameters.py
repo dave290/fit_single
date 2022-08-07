@@ -116,3 +116,45 @@ def get_limits():
     limits=[lowerfitthreshold,upperfitthreshold,startline,endline]
     os.chdir("..")
     return limits
+
+def get_gallatlong():
+    #read galactic latitude and longitude values saved in .kel file header
+    os.chdir("..")
+    A=read_datafilename.get_datafilename()
+    file=str(A[0])
+    os.chdir("data")
+    colon=[999]
+    with open(file, 'r') as f:
+        for line in f:
+            linestring=line.split()
+            if linestring[1]=="GALLON":
+                coordinate=linestring[3]
+                for j in range(8):
+                    if coordinate[j]==":":
+                        colon.append(j)
+                degrees=float(coordinate[0:colon[1]])
+                minutes=float(coordinate[colon[1]+1:colon[2]])
+                seconds=float(coordinate[colon[2]+1:])
+                degrees=degrees+minutes/60.0+seconds/3600.0
+                gallon=float(round(degrees,2))
+                colon=[999]
+            if linestring[1]=="GALLAT":
+                coordinate=linestring[3]
+                if coordinate[0]=="-":
+                    multiplier=-1.0
+                if coordinate[0]=="+":
+                    multiplier=+1.0
+                for j in range(8):
+                    if coordinate[j]==":":
+                        colon.append(j)
+                degrees=float(coordinate[1:colon[1]])
+                minutes=float(coordinate[colon[1]+1:colon[2]])
+                seconds=float(coordinate[colon[2]+1:])
+                degrees=multiplier*(degrees+minutes/60.0+seconds/3600.0)
+                gallat=float(round(degrees,2))
+                colon=[999]
+        f.closed
+        True
+    os.chdir("..")
+    gallatlong=[gallat,gallon]
+    return gallatlong
