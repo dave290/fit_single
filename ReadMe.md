@@ -3,10 +3,10 @@ Welcome!  This suite of Python scripts is intended to be used for fitting radio-
 SETTING UP THESE PROGRAMS FOR THE FIRST TIME
 The Matplotlib program is required for plotting. PIP install using the command below:
 $ pip install matplotlib
-Be sure to create a folder named "data" and make this a subfolder inside of the folder containing the programs below.
-The data folder should contain the following two files:
+The subfolder "data" should contain the programs below.
 parameters.txt
 <datafile>.kel
+(Be sure to delete the file "Delete_this_File" after updating with a git pull command)
 
 PLOT THE KEL FILE
 In "data" subfolder, open the file "parameters.txt"  (leave this file open so you can modify later)
