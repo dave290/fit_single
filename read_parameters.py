@@ -78,7 +78,7 @@ def get_iterations():
     return iterations
 
 def get_limits():
-    #read lower and upper fit thresholds
+    #read lower and upper fit thresholds in km/s, convert to m/s
     os.chdir('data')
     file=["parameters.txt"]
     for workingfile in file:
@@ -86,9 +86,9 @@ def get_limits():
             for line in f:
                 linestring=line.split()
                 if linestring[0] == "Lowerfitthreshold":      
-                    lowerfitthreshold=float(linestring[1])
+                    lowerfitthreshold=1000*float(linestring[1])
                 if linestring[0] == "Upperfitthreshold":
-                    upperfitthreshold=float(linestring[1])             
+                    upperfitthreshold=1000*float(linestring[1])             
         f.closed
         True
     os.chdir("..")

@@ -17,7 +17,7 @@ def velocity(startline,endline):
                 line_no=line_no+1
                 if line_no>=startline and line_no<=endline:
                     linestring=line.split()      
-                    vel=float(linestring[1])
+                    vel=(float(linestring[1]))/1000.0
                     vel_list.append(vel)
         f.closed
         True

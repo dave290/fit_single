@@ -1,38 +1,19 @@
-#quickplot.py
-#plots single scan from a kel file
-#file should be in the same directory as this program
-#copy this program into the folder that contains the kel file
-#to plot velocity, enter bounds in km/s
-#python quickplot.py (-L -200 -H +200) optional
-#to plot frequency, enter bounds in kHz
-#python quickplot.py (-L 1419200 -H 1421600) optional
+#plotvel.py
+#reads .kel file that is located in same directory as this program
+#converts velocity from m/s into km/s
+#plots intensity vs velocity
 
-'''
-import argparse
-parser = argparse.ArgumentParser(description='A test program.')
-parser.add_argument("-L", "--lower_bound", help="Enter lower bound in km/s or kHz", type=int)
-parser.add_argument("-H", "--higher_bound", help="Enter higher bound in km/s or kHz", type=int)
-args = parser.parse_args()
-lowerfitthreshold=args.lower_bound*1000
-upperfitthreshold=args.higher_bound*1000
-'''
-lowerfitthreshold=-200000
-upperfitthreshold=+200000
+#enter lower and upper bounds below
+lowerbound=-200*1000
+upperbound=+200*1000
 
 import os
 import collections
 import matplotlib.pyplot as plt
 from mpl_toolkits import mplot3d
-fig=plt.figure(figsize=(12,6))
-
-ax=plt.axes()
-ax.set_title("Intensity vs Velocity")
-ax.set_xlabel("Velocity (m/s)")
-ax.set_ylabel("Intensity (K)")
 
 #Initialize variables
-GALLON=[0];GALLAT=[0];velocity=[0];intensity=[0]
-colon=[999];correction=0
+GALLON=[0];GALLAT=[0];velocity=[0];intensity=[0];correction=0;colon=[999]
 
 #Read the list of items in the working directory and find single file with .kel extension
 dir_items=os.listdir()
@@ -53,7 +34,7 @@ with open(datafile, 'r') as f:
             pass
         else:
             vel=float(linestring[1])
-            if vel>=lowerfitthreshold and vel<=upperfitthreshold:
+            if vel>=lowerbound and vel<=upperbound:
                 linesofdata.append(line_no)
         continue
 f.closed
@@ -98,16 +79,25 @@ with open(datafile,'r') as f:
             GALLON.append(gallon)
             GALLAT.append(gallat)
             linestring=line.split()      
-            x=float(linestring[1])
+            x=(float(linestring[1]))/1000.0
             velocity.append(x)
             y=float(linestring[2])
             intensity.append(y)
 f.closed
 True
-GALLON[0]=GALLON[1];GALLAT[0]=GALLAT[1]
-velocity[0]=velocity[1];intensity[0]=intensity[1]
-ax.scatter(velocity,intensity,marker=".",label=("GLONG,GLAT= "+str(GALLON[0])+"  "+str(GALLAT[0])))
-ax.legend(loc="best")
+GALLON.pop(0);GALLAT.pop(0);velocity.pop(0);intensity.pop(0)
 
+#plot intensity vs velocity
+fig=plt.figure(figsize=(10,6))
+ax=plt.axes()
+ax.set_title("Intensity vs Velocity",fontsize=20)
+ax.set_xlabel("Velocity (km/s)", fontsize=18)
+ax.set_ylabel("Intensity (Kelvins)", fontsize=18)
+plt.xticks(fontsize=16)
+plt.yticks(fontsize=16)
+#ax.set_xticks([-200,-150,-100,-50,0,50,100,150,200])
+ax.scatter(velocity,intensity, c="red",s=60,label=("GLONG,GLAT= "+str(int(GALLON[0]))+"  "+str(int(GALLAT[0]))))
+ax.legend(loc="best")
 plt.show()
+
 exit()

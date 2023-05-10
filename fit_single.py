@@ -1,7 +1,6 @@
 #fit_single.py
 #Fits selected peak from a .kel file with a single gaussian after subtracting linear background
 #Format is intensity vs velocity
-#David Schultz, December 22,2021
 
 import collections        #needed for deque, remove, & rotate
 import os                 #allows use of directory changing & reading commands
@@ -45,7 +44,7 @@ if fitdisplaytype=="showline":
     #READ EXPERIMENTAL DATA FROM -200000 M/S to +200000 M/S
     velocity=read_datafile.velocity(64,869)
     intensity=read_datafile.intensity(64,869)
-    plot.plot_showline(velocity,intensity,points,slope,intercept,coordinate,offset)
+    plot.plot_showline(velocity,intensity,points,slope,intercept,offset)
     exit()
 
 if fitdisplaytype=="showfit":
@@ -123,5 +122,5 @@ if fitdisplaytype=="showfit":
     g.closed
     True
 
-plot.plot_showfit(velocity,intensity,parameter,startline,endline,coordinate)
+plot.plot_showfit(velocity,intensity,parameter,startline,endline)
 exit()

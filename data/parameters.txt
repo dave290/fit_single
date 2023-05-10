@@ -1,0 +1,25 @@
+# Parameter file for fit_single.py
+#
+File 22-09-16T120639.kel
+Coordinate Velocity_(km/s)
+Lowerfitthreshold -30
+Upperfitthreshold +54
+Iterations 20
+#
+# enter showline or showfit on the line below
+F showfit
+#
+# select the fit stepsizes and max steps
+S centerstepsize&maxsteps(km/s) 0.1  1000
+S coefficientstepsize&steps(Kelvins) 0.1 1000
+S sigmastepsize&steps(km/s) 0.1 1000
+#
+# Note that flags appear after parameters and should be set to either "0" or "1"
+# For initial guess, set all flags to "0"
+# For subsequent fitting, set flags to "1" for parameters you wish to fit
+# 
+P center -10 1
+P coef 5 1
+P sigma 1 1
+#
+# End of parameters. Do not hit return at the end of this line!
